@@ -39,6 +39,7 @@
       highlight-current-row
       style="width: 100%"
     >
+    <el-table-column type="selection"/>
       <el-table-column
         v-for="(i, index) in props.header"
         :key="index"

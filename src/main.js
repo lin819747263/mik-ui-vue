@@ -4,7 +4,7 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import 'element-plus/dist/index.css'
 import App from './App.vue'
 import router from './router/index';
-import axios from '@/plugins/axiosInstance.js'
+import {API, $get, $post} from '@/plugins/axiosInstance.js'
 import moment from 'moment';
 
 
@@ -15,7 +15,9 @@ app.use(ElementPlus, {
     locale: zhCn,
 })
 app.use(router);
-app.config.globalProperties.$axios = axios;
+app.config.globalProperties.$axios = API;
+app.config.globalProperties.$get = $get;
+app.config.globalProperties.$post = $post;
 app.config.globalProperties.$moment = moment;
 
 app.mount('#app');

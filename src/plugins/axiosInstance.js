@@ -8,5 +8,44 @@ const API = axios.create({
 	timeout: 2000                   //请求超时设置，单位ms
 })
 
+
+const $get = (url, param)=>{
+    return new Promise((resolve, reject) => {
+        API({
+            url: url,
+            method: "get",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            params: param,
+          }).then(res => {
+            resolve(res.data);
+        })
+        .catch(err => {
+            reject(err.data)
+        })
+    });
+}
+
+const $post = (url, param)=>{
+    return new Promise((resolve, reject) => {
+        API({
+            url: url,
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            params: param,
+          }).then(res => {
+            resolve(res.data);
+        })
+        .catch(err => {
+            reject(err.data)
+        })
+    });
+}
+
 //导出我们建立的axios实例模块，ES6 export用法
-export default API
+// export default API
+
+export {API, $post, $get}
